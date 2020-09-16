@@ -18,7 +18,8 @@ abstract class BaseViewModel : ViewModel() {
         }
     }
 
-    protected fun launch(block: suspend CoroutineScope.() -> Unit): Job = viewModelScope.launch(block = block)
+    protected fun launch(block: suspend CoroutineScope.() -> Unit): Job =
+        viewModelScope.launch(Dispatchers.Main, block = block)
 
     protected open fun handleError(error: Throwable) {
         this.error.value = error

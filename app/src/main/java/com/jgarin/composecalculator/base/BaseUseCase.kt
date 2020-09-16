@@ -1,13 +1,13 @@
 package com.jgarin.composecalculator.base
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 abstract class BaseUseCase<in Params, out Type> {
 
-    protected val backgroundThread = CoroutineScope(Dispatchers.IO)
-    private val mainThread = Dispatchers.Main
-
-    suspend operator fun invoke(params: Params): Try<Type> = run(params)
+    suspend operator fun invoke(params: Params): Try<Type> = withContext(Dispatchers.Default) {
+        run(params)
+    }
 
     abstract suspend fun run(params: Params): Try<Type>
 }

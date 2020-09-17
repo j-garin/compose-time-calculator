@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/screen_home">
+
+    <fragment
+        android:id="@+id/screen_home"
+        android:name="com.jgarin.composecalculator.ui.home.HomeFragment">
+        <action
+            android:id="@+id/action_screen_home_to_screen_create"
+            app:destination="@id/screen_create" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/screen_create"
+        android:name="com.jgarin.composecalculator.ui.addedit.CreateItemFragment">
+        <argument
+            android:name="wokrListItem"
+            android:defaultValue="@null"
+            app:argType="com.jgarin.composecalculator.data.DurationItem"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>

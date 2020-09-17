@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.ui.components
+package com.jgarin.composecalculator.ui.home.components
 
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.RowScope.gravity
@@ -9,10 +9,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import com.jgarin.composecalculator.data.WorkDuration
+import com.jgarin.composecalculator.data.DurationItem
 
 @Composable
-fun Total(total: WorkDuration) {
+fun Total(total: DurationItem) {
     val text = "Total: " + when (total.minutes.toString().length) {
         1 -> "${total.hours}:0${total.minutes}"
         else -> "${total.hours}:${total.minutes}"
@@ -24,6 +24,6 @@ fun Total(total: WorkDuration) {
 @Composable
 private fun preview() {
     MaterialTheme {
-        Total(total = WorkDuration(1, 23))
+        Total(total = DurationItem(0, 1, 23))
     }
 }

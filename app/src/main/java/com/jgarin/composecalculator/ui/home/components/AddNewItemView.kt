@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.ui.components
+package com.jgarin.composecalculator.ui.home.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text

@@ -1,8 +1,8 @@
 package com.jgarin.composecalculator.ui.addedit
 
 import androidx.lifecycle.MutableLiveData
-import com.jgarin.composecalculator.base.BaseViewModel
-import com.jgarin.composecalculator.base.SingleEvent
+import com.jgarin.composecalculator.ui.base.BaseViewModel
+import com.jgarin.composecalculator.ui.base.SingleEvent
 import com.jgarin.composecalculator.uimodels.DurationUi
 
 class CreateEditViewModel(

@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.base
+package com.jgarin.composecalculator.ui.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.base
+package com.jgarin.composecalculator.ui.base
 
 class SingleEvent<T>(private val data: T) {
 

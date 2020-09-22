@@ -12,20 +12,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.jgarin.composecalculator.data.AddMoreListItem
-import com.jgarin.composecalculator.data.DurationItem
+import com.jgarin.composecalculator.data.DurationUi
 import com.jgarin.composecalculator.ui.home.HomeViewModel
 
 @Composable
 fun HomeScreenContent(
     viewModel: HomeViewModel,
     addItem: () -> Unit,
-    editItem: (DurationItem) -> Unit
+    editItem: (DurationUi) -> Unit
 ) {
     MaterialTheme {
         Scaffold(
             topBar = {
                 TopAppBar {
-                    val total = viewModel.total.observeAsState(DurationItem(0, 0, 0)).value
+                    val total = viewModel.total.observeAsState(DurationUi(0, 0, 0)).value
                     Total(total = total)
                 }
             },
@@ -38,7 +38,7 @@ fun HomeScreenContent(
                 itemContent = { item ->
                     when (item) {
                         is AddMoreListItem -> AddNewItemView(onClick = addItem)
-                        is DurationItem -> DurationItemView(
+                        is DurationUi -> DurationItemView(
                             item = item,
                             onDeleteClicked = { viewModel.removeItem(item) },
                             onClicked = editItem,

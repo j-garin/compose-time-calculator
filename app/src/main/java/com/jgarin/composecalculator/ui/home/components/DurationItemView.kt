@@ -13,13 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import com.jgarin.composecalculator.data.DurationItem
+import com.jgarin.composecalculator.data.DurationUi
 
 @Composable
 fun DurationItemView(
-    item: DurationItem,
-    onDeleteClicked: (DurationItem) -> Unit,
-    onClicked: (DurationItem) -> Unit,
+    item: DurationUi,
+    onDeleteClicked: (DurationUi) -> Unit,
+    onClicked: (DurationUi) -> Unit,
 ) {
 
     val text = when (item.minutes.toString().length) {
@@ -47,7 +47,7 @@ fun DurationItemView(
 private fun preview() {
     MaterialTheme {
         DurationItemView(
-            item = DurationItem(0, 3, 0),
+            item = DurationUi(0, 3, 0),
             onDeleteClicked = {},
             onClicked = {},
         )

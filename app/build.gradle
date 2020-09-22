@@ -85,6 +85,7 @@ dependencies {
     // koin
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation project(path: ':models')
     // tests
     testImplementation 'junit:junit:4.13'
     testImplementation "org.koin:koin-test:$koin_version"

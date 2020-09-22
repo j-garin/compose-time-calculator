@@ -1,6 +1,6 @@
 package com.jgarin.composecalculator.repository
 
-import com.jgarin.composecalculator.data.DurationItem
+import com.jgarin.composecalculator.models.DurationDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
@@ -8,12 +8,12 @@ import kotlinx.coroutines.withContext
 
 internal class InMemoryDataRepository : DataRepository {
 
-    private val data = ArrayList<DurationItem>()
-    private val channel = Channel<List<DurationItem>>()
+    private val data = ArrayList<DurationDomain>()
+    private val channel = Channel<List<DurationDomain>>()
 
     override suspend fun creteItem(hours: Int, minutes: Int) = withContext(Dispatchers.IO) {
         delay(300) // emulate backend delay
-        val item = DurationItem(
+        val item = DurationDomain(
             id = System.currentTimeMillis(),
             hours = hours,
             minutes = minutes,
@@ -22,11 +22,11 @@ internal class InMemoryDataRepository : DataRepository {
         channel.send(data)
     }
 
-    override fun readItems(): Channel<List<DurationItem>> {
+    override fun readItems(): Channel<List<DurationDomain>> {
         return channel
     }
 
-    override suspend fun updateItem(item: DurationItem) = withContext(Dispatchers.IO) {
+    override suspend fun updateItem(item: DurationDomain) = withContext(Dispatchers.IO) {
         delay(500) // emulate backend delay
         val index = data.indexOfFirst { it.id == item.id }
         data[index] = item // let it throw

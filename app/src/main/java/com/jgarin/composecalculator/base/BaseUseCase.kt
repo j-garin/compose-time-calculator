@@ -9,5 +9,5 @@ abstract class BaseUseCase<in Params, out Type> {
         run(params)
     }
 
-    abstract suspend fun run(params: Params): Try<Type>
+    protected abstract suspend fun run(params: Params): Try<Type>
 }

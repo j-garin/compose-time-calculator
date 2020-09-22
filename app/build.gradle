@@ -91,6 +91,7 @@ dependencies {
     implementation project(path: ':uimodels')
     implementation project(path: ':repository')
     implementation project(path: ':usecase')
+    implementation project(path: ':mappers')
 
     // tests
     testImplementation 'junit:junit:4.13'

@@ -13,8 +13,8 @@ class HomeViewModel(
     readItemsUseCase: com.jgarin.composecalculator.usecase.ReadItemsUseCase,
     private val removeItemUseCase: com.jgarin.composecalculator.usecase.RemoveItemUseCase,
     private val calculateTotalUseCase: com.jgarin.composecalculator.usecase.CalculateTotalUseCase,
-    private val domainToUiMapper: DurationDomainToUiMapper,
-    private val uiToDomainMapper: DurationUiToDomainMapper,
+    private val domainToUiMapper: com.jgarin.composecalculator.mappers.DurationDomainToUiMapper,
+    private val uiToDomainMapper: com.jgarin.composecalculator.mappers.DurationUiToDomainMapper,
 ) : BaseViewModel() {
 
     val items =

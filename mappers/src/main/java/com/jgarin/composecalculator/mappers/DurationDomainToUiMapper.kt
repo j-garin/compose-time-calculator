@@ -1,6 +1,6 @@
 package com.jgarin.composecalculator.mappers
 
-import com.jgarin.composecalculator.base.BaseMapper
+import com.jgarin.composecalculator.mappers.base.BaseMapper
 import com.jgarin.composecalculator.uimodels.DurationUi
 import com.jgarin.composecalculator.models.DurationDomain
 

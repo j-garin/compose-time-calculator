@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"
+
+    // koin
+    implementation "org.koin:koin-android:$koin_version"
+
+    // modules
+    implementation project(path: ':models')
+    implementation project(path: ':uimodels')
+    implementation project(path: ':uimodels')
+}

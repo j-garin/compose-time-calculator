@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.base
+package com.jgarin.composecalculator.mappers.base
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

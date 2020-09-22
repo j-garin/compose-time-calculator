@@ -2,9 +2,9 @@ package com.jgarin.composecalculator.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import com.jgarin.composecalculator.base.BaseViewModel
-import com.jgarin.composecalculator.data.AddMoreListItem
-import com.jgarin.composecalculator.data.DurationUi
-import com.jgarin.composecalculator.data.MainScreenListItem
+import com.jgarin.composecalculator.uimodels.AddMoreListItem
+import com.jgarin.composecalculator.uimodels.DurationUi
+import com.jgarin.composecalculator.uimodels.MainScreenListItem
 import com.jgarin.composecalculator.mappers.DurationDomainToUiMapper
 import com.jgarin.composecalculator.mappers.DurationUiToDomainMapper
 import com.jgarin.composecalculator.usecase.base.map

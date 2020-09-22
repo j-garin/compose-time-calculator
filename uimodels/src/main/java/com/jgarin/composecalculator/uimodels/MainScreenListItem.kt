@@ -1,0 +1,3 @@
+package com.jgarin.composecalculator.uimodels
+
+interface MainScreenListItem

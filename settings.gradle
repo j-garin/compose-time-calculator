@@ -3,3 +3,4 @@ rootProject.name = "ComposeCalculator"
 include ':models'
 include ':repository'
 include ':usecase'
+include ':uimodels'

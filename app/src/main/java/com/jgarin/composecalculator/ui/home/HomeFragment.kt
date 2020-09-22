@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.jgarin.composecalculator.data.DurationUi
+import com.jgarin.composecalculator.uimodels.DurationUi
 import com.jgarin.composecalculator.ui.home.components.HomeScreenContent
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
-import com.jgarin.composecalculator.data.DurationUi
+import com.jgarin.composecalculator.uimodels.DurationUi
 
 @Composable
 fun DurationItemView(

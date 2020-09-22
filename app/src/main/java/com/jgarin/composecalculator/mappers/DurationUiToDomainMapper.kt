@@ -1,7 +1,7 @@
 package com.jgarin.composecalculator.mappers
 
 import com.jgarin.composecalculator.base.BaseMapper
-import com.jgarin.composecalculator.data.DurationUi
+import com.jgarin.composecalculator.uimodels.DurationUi
 import com.jgarin.composecalculator.models.DurationDomain
 
 class DurationUiToDomainMapper : BaseMapper<DurationUi, DurationDomain>() {

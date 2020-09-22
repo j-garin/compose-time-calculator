@@ -17,7 +17,7 @@
         android:name="com.jgarin.composecalculator.ui.addedit.CreateItemFragment">
         <argument
             android:name="wokrListItem"
-            app:argType="com.jgarin.composecalculator.data.DurationUi"
+            app:argType="com.jgarin.composecalculator.uimodels.DurationUi"
             app:nullable="true" />
     </fragment>
 

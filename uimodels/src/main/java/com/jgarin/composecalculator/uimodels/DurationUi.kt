@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.data
+package com.jgarin.composecalculator.uimodels
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

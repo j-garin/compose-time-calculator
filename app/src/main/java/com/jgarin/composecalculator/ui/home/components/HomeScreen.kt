@@ -11,8 +11,8 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.jgarin.composecalculator.data.AddMoreListItem
-import com.jgarin.composecalculator.data.DurationUi
+import com.jgarin.composecalculator.uimodels.AddMoreListItem
+import com.jgarin.composecalculator.uimodels.DurationUi
 import com.jgarin.composecalculator.ui.home.HomeViewModel
 
 @Composable

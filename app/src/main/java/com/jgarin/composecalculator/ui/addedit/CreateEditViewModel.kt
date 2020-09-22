@@ -3,9 +3,7 @@ package com.jgarin.composecalculator.ui.addedit
 import androidx.lifecycle.MutableLiveData
 import com.jgarin.composecalculator.base.BaseViewModel
 import com.jgarin.composecalculator.base.SingleEvent
-import com.jgarin.composecalculator.data.DurationUi
-import com.jgarin.composecalculator.usecase.CreateItemUseCase
-import com.jgarin.composecalculator.usecase.UpdateItemUseCase
+import com.jgarin.composecalculator.uimodels.DurationUi
 
 class CreateEditViewModel(
     durationItem: DurationUi?,

@@ -8,10 +8,10 @@ import com.jgarin.composecalculator.data.MainScreenListItem
 class CalculateTotalUseCase : BaseUseCase<List<MainScreenListItem>, DurationItem>() {
 
     override suspend fun run(params: List<MainScreenListItem>): Try<DurationItem> {
-        val workDurations = params.filterIsInstance<DurationItem>()
-        if (workDurations.isEmpty()) return Try.Success(DurationItem(0, 0, 0))
+        val durations = params.filterIsInstance<DurationItem>()
+        if (durations.isEmpty()) return Try.Success(DurationItem(0, 0, 0))
         return Try.Success(
-            workDurations
+            durations
                 .reduce { acc, item ->
                     val minutesSum = acc.minutes + item.minutes
                     DurationItem(

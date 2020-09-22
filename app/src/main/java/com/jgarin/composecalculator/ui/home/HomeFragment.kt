@@ -6,31 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.jgarin.composecalculator.repository.repository
 import com.jgarin.composecalculator.data.DurationItem
 import com.jgarin.composecalculator.ui.home.components.HomeScreenContent
-import com.jgarin.composecalculator.usecase.CalculateTotalUseCase
-import com.jgarin.composecalculator.usecase.ReadItemsUseCase
-import com.jgarin.composecalculator.usecase.RemoveItemUseCase
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-    private val viewModel by viewModels<HomeViewModel> {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                @Suppress("UNCHECKED_CAST")
-                return HomeViewModel(
-                    ReadItemsUseCase(repository),
-                    RemoveItemUseCase(repository),
-                    CalculateTotalUseCase(),
-                ) as T
-            }
-        }
-    }
+    private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,

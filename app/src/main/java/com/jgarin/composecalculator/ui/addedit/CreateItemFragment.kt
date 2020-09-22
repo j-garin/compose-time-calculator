@@ -6,30 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
-import com.jgarin.composecalculator.repository.repository
 import com.jgarin.composecalculator.ui.addedit.components.CreateEditContent
-import com.jgarin.composecalculator.usecase.CreateItemUseCase
-import com.jgarin.composecalculator.usecase.UpdateItemUseCase
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class CreateItemFragment : Fragment() {
 
     private val args: CreateItemFragmentArgs by navArgs()
-    private val viewModel: CreateEditViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                @Suppress("UNCHECKED_CAST")
-                return CreateEditViewModel(
-                    args.wokrListItem,
-                    CreateItemUseCase(repository),
-                    UpdateItemUseCase(repository)
-                ) as T
-            }
-        }
-    }
+    private val viewModel: CreateEditViewModel by viewModel { parametersOf(args.wokrListItem) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

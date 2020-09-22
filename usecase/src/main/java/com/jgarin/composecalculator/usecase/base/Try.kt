@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.base
+package com.jgarin.composecalculator.usecase.base
 
 sealed class Try<out D> {
 
@@ -25,13 +25,13 @@ sealed class Try<out D> {
     }
 }
 
-suspend inline fun <I, O> Try<I>.map(mapper: (I) -> O): Try<O> =
+inline fun <I, O> Try<I>.map(mapper: (I) -> O): Try<O> =
     when (this) {
         is Try.Error -> Try.Error(this.error)
         is Try.Success -> Try { mapper(this.data) }
     }
 
-suspend inline fun <I, O> Try<I>.flatMap(mapper: (I) -> Try<O>): Try<O> =
+inline fun <I, O> Try<I>.flatMap(mapper: (I) -> Try<O>): Try<O> =
     when (this) {
         is Try.Error -> Try.Error(this.error)
         is Try.Success -> mapper(this.data)

@@ -1,22 +1,20 @@
 package com.jgarin.composecalculator.ui.home
 
 import androidx.lifecycle.MutableLiveData
-import com.jgarin.composecalculator.base.BaseMapper
 import com.jgarin.composecalculator.base.BaseViewModel
 import com.jgarin.composecalculator.data.AddMoreListItem
 import com.jgarin.composecalculator.data.DurationUi
 import com.jgarin.composecalculator.data.MainScreenListItem
 import com.jgarin.composecalculator.mappers.DurationDomainToUiMapper
-import com.jgarin.composecalculator.models.DurationDomain
-import com.jgarin.composecalculator.usecase.CalculateTotalUseCase
-import com.jgarin.composecalculator.usecase.ReadItemsUseCase
-import com.jgarin.composecalculator.usecase.RemoveItemUseCase
+import com.jgarin.composecalculator.mappers.DurationUiToDomainMapper
+import com.jgarin.composecalculator.usecase.base.map
 
 class HomeViewModel(
-    readItemsUseCase: ReadItemsUseCase,
-    private val removeItemUseCase: RemoveItemUseCase,
-    private val calculateTotalUseCase: CalculateTotalUseCase,
-    private val mapper: DurationDomainToUiMapper,
+    readItemsUseCase: com.jgarin.composecalculator.usecase.ReadItemsUseCase,
+    private val removeItemUseCase: com.jgarin.composecalculator.usecase.RemoveItemUseCase,
+    private val calculateTotalUseCase: com.jgarin.composecalculator.usecase.CalculateTotalUseCase,
+    private val domainToUiMapper: DurationDomainToUiMapper,
+    private val uiToDomainMapper: DurationUiToDomainMapper,
 ) : BaseViewModel() {
 
     val items =
@@ -26,19 +24,25 @@ class HomeViewModel(
     init {
         launch {
             for (list in readItemsUseCase()) {
-                items.value = ArrayList<MainScreenListItem>(list.map { item -> mapper(item) })
-                    .apply { add(AddMoreListItem) }
+                items.value =
+                    ArrayList<MainScreenListItem>(list.map { item -> domainToUiMapper(item) })
+                        .apply { add(AddMoreListItem) }
                 calculateTotal()
             }
         }
     }
 
     fun removeItem(item: DurationUi) = launch {
-        removeItemUseCase(RemoveItemUseCase.Params(item.id)).doOnError(::handleError)
+        removeItemUseCase(com.jgarin.composecalculator.usecase.RemoveItemUseCase.Params(item.id)).doOnError(
+            ::handleError
+        )
     }.addToLoadingState()
 
     private fun calculateTotal() = launch {
-        calculateTotalUseCase(items.value!!)
+        calculateTotalUseCase(
+            items.value!!.filterIsInstance(DurationUi::class.java)
+                .map { item -> uiToDomainMapper(item) })
+            .map { item -> domainToUiMapper(item) }
             .doOnError(::handleError)
             .doOnSuccess(total::setValue)
     }

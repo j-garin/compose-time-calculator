@@ -1,4 +1,4 @@
-package com.jgarin.composecalculator.base
+package com.jgarin.composecalculator.usecase.base
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -9,5 +9,5 @@ abstract class BaseUseCase<in Params, out Type> {
         run(params)
     }
 
-    protected abstract suspend fun run(params: Params): Try<Type>
+    internal abstract suspend fun run(params: Params): Try<Type>
 }

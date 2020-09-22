@@ -1,8 +1,8 @@
 package com.jgarin.composecalculator.usecase
 
-import com.jgarin.composecalculator.base.BaseUseCase
-import com.jgarin.composecalculator.base.Try
 import com.jgarin.composecalculator.repository.DataRepository
+import com.jgarin.composecalculator.usecase.base.BaseUseCase
+import com.jgarin.composecalculator.usecase.base.Try
 
 class CreateItemUseCase(private val repo: DataRepository) :
     BaseUseCase<CreateItemUseCase.Params, Unit>() {

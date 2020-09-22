@@ -1,9 +1,9 @@
 package com.jgarin.composecalculator.usecase
 
-import com.jgarin.composecalculator.base.BaseUseCase
-import com.jgarin.composecalculator.base.Try
 import com.jgarin.composecalculator.models.DurationDomain
 import com.jgarin.composecalculator.repository.DataRepository
+import com.jgarin.composecalculator.usecase.base.BaseUseCase
+import com.jgarin.composecalculator.usecase.base.Try
 
 class UpdateItemUseCase(private val repo: DataRepository) :
     BaseUseCase<UpdateItemUseCase.Params, Unit>() {

@@ -19,7 +19,7 @@ class CreateEditViewModel(
 
     val hours = MutableLiveData<Int>().apply { value = durationItem?.hours ?: 0 }
     val minutes = MutableLiveData<Int>().apply { value = durationItem?.minutes ?: 0 }
-    val event = MutableLiveData<SingleEvent<Unit>?>()
+    val saveCompleteEvent = MutableLiveData<SingleEvent<Unit>?>()
 
     fun save() = launch {
         val hours = hours.value!!
@@ -31,7 +31,7 @@ class CreateEditViewModel(
             createItemUseCase(CreateItemUseCase.Params(hours = hours, minutes = minutes))
         }
             .doOnError(::handleError)
-            .doOnSuccess { event.value = SingleEvent(Unit) }
+            .doOnSuccess { saveCompleteEvent.value = SingleEvent(Unit) }
     }.addToLoadingState()
 
     fun adjustHours(offset: Float) {

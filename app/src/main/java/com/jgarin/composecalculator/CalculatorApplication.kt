@@ -11,11 +11,20 @@ import org.koin.core.context.startKoin
 
 class CalculatorApplication : Application() {
 
+    private val modules = listOf(
+        repositoryModule,
+        useCaseModule,
+        mappersModule,
+        // UI
+        homeModule,
+        createEditModule
+    )
+
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidContext(this@CalculatorApplication)
-            modules(repositoryModule, useCaseModule, mappersModule, homeModule, createEditModule)
+            modules(modules)
         }
     }
 }

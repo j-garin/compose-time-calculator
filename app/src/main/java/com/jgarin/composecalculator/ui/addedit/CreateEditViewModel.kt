@@ -4,11 +4,13 @@ import androidx.lifecycle.MutableLiveData
 import com.jgarin.composecalculator.ui.base.BaseViewModel
 import com.jgarin.composecalculator.ui.base.SingleEvent
 import com.jgarin.composecalculator.uimodels.DurationUi
+import com.jgarin.composecalculator.usecase.CreateItemUseCase
+import com.jgarin.composecalculator.usecase.UpdateItemUseCase
 
 class CreateEditViewModel(
     durationItem: DurationUi?,
-    private val createItemUseCase: com.jgarin.composecalculator.usecase.CreateItemUseCase,
-    private val updateItemUseCase: com.jgarin.composecalculator.usecase.UpdateItemUseCase,
+    private val createItemUseCase: CreateItemUseCase,
+    private val updateItemUseCase: UpdateItemUseCase,
 ) : BaseViewModel() {
 
     private val id = durationItem?.id ?: -1L
@@ -24,9 +26,9 @@ class CreateEditViewModel(
         val minutes = minutes.value!!
 
         if (isEditMode) {
-            updateItemUseCase(com.jgarin.composecalculator.usecase.UpdateItemUseCase.Params(id = id, hours = hours, minutes = minutes))
+            updateItemUseCase(UpdateItemUseCase.Params(id = id, hours = hours, minutes = minutes))
         } else {
-            createItemUseCase(com.jgarin.composecalculator.usecase.CreateItemUseCase.Params(hours = hours, minutes = minutes))
+            createItemUseCase(CreateItemUseCase.Params(hours = hours, minutes = minutes))
         }
             .doOnError(::handleError)
             .doOnSuccess { saveCompleteEvent.value = SingleEvent(Unit) }

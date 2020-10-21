@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.RowScope.gravity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
@@ -29,8 +28,8 @@ fun DurationItemView(
 
     Row(
         modifier = Modifier.fillMaxWidth().wrapContentHeight().padding(8.dp)
-            .gravity(Alignment.CenterVertically)
-            .clickable { onClicked(item) }
+            .clickable { onClicked(item) },
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(modifier = Modifier.weight(1f, fill = true), text = text)
         Spacer(modifier = Modifier.width(8.dp))

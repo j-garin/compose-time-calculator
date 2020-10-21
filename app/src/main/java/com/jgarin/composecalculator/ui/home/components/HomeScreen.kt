@@ -33,7 +33,7 @@ fun HomeScreenContent(
             val items = viewModel.items.observeAsState(emptyList()).value
             LazyColumnFor(
                 modifier = Modifier.padding(16.dp).fillMaxWidth(),
-                horizontalGravity = Alignment.CenterHorizontally,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 items = items,
                 itemContent = { item ->
                     when (item) {

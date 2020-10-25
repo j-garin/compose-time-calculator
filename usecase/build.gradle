@@ -1,11 +1,18 @@
 plugins {
-    id 'java-library'
-    id 'kotlin'
+    id 'com.android.library'
+    id 'kotlin-android'
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -19,5 +26,7 @@ dependencies {
 
     // modules
     implementation project(path: ':models')
+    implementation project(path: ':uimodels')
     implementation project(path: ':repository')
+    implementation project(path: ':mappers')
 }

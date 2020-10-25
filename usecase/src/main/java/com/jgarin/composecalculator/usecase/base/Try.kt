@@ -6,12 +6,12 @@ sealed class Try<out D> {
 
     data class Success<out D>(val data: D) : Try<D>()
 
-    fun doOnSuccess(block: (D) -> Unit): Try<D> {
+    inline fun doOnSuccess(block: (D) -> Unit): Try<D> {
         if (this is Success) block(data)
         return this
     }
 
-    fun doOnError(block: (Throwable) -> Unit): Try<D> {
+    inline fun doOnError(block: (Throwable) -> Unit): Try<D> {
         if (this is Error) block(error)
         return this
     }

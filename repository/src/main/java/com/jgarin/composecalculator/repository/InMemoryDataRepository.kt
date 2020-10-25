@@ -4,6 +4,9 @@ import com.jgarin.composecalculator.models.DurationDomain
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.withContext
 
 internal class InMemoryDataRepository : DataRepository {
@@ -22,8 +25,9 @@ internal class InMemoryDataRepository : DataRepository {
         channel.send(data)
     }
 
-    override fun readItems(): Channel<List<DurationDomain>> {
-        return channel
+    override suspend fun readItems(): Flow<List<DurationDomain>> {
+        return channel.consumeAsFlow()
+            .onStart { emit(data) }
     }
 
     override suspend fun updateItem(item: DurationDomain) = withContext(Dispatchers.IO) {

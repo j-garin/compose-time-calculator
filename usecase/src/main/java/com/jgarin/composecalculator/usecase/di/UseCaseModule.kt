@@ -7,7 +7,7 @@ val useCaseModule = module {
 
     factory { CalculateTotalUseCase() }
     factory { CreateItemUseCase(get()) }
-    factory { ReadItemsUseCase(get()) }
+    factory { ReadItemsUseCase(get(), get()) }
     factory { RemoveItemUseCase(get()) }
     factory { UpdateItemUseCase(get()) }
 }

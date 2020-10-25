@@ -3,8 +3,11 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="ComposeCalculator.app" target="11" />
+      <module name="ComposeCalculator.di" target="11" />
       <module name="ComposeCalculator.mappers" target="11" />
+      <module name="ComposeCalculator.ui" target="11" />
       <module name="ComposeCalculator.uimodels" target="11" />
+      <module name="ComposeCalculator.usecase" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

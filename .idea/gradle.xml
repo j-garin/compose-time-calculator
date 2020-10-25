@@ -12,9 +12,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/di" />
             <option value="$PROJECT_DIR$/mappers" />
             <option value="$PROJECT_DIR$/models" />
             <option value="$PROJECT_DIR$/repository" />
+            <option value="$PROJECT_DIR$/ui" />
             <option value="$PROJECT_DIR$/uimodels" />
             <option value="$PROJECT_DIR$/usecase" />
           </set>

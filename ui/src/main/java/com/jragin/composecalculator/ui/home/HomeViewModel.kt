@@ -23,18 +23,16 @@ class HomeViewModel(
 
     init {
         loadItems()
+        getTotal()
     }
 
-    private fun loadItems() {
-        launch {
-            readItemsUseCase(Unit)
+    private fun loadItems() = launch {
+        readItemsUseCase().collect { result ->
+            result
                 .doOnError(::handleError)
-                .doOnSuccess { flow ->
-                    flow.collect { list ->
-                        items.value = list.toMutableList<MainScreenListItem>()
-                            .apply { add(AddMoreListItem) }
-                        calculateTotal(list)
-                    }
+                .doOnSuccess { list ->
+                    items.value = list.toMutableList<MainScreenListItem>()
+                        .apply { add(AddMoreListItem) }
                 }
         }
     }
@@ -44,9 +42,12 @@ class HomeViewModel(
             .doOnError(::handleError)
     }.addToLoadingState()
 
-    private fun calculateTotal(list: List<DurationUi>) = launch {
-        calculateTotalUseCase(list)
-            .doOnError(::handleError)
-            .doOnSuccess(total::setValue)
+    private fun getTotal() = launch {
+        calculateTotalUseCase()
+            .collect { result ->
+                result
+                    .doOnError(::handleError)
+                    .doOnSuccess { total.value = it }
+            }
     }
 }

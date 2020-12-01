@@ -1,13 +1,13 @@
 package com.jragin.composecalculator.ui.home
 
 import androidx.lifecycle.MutableLiveData
-import com.jragin.composecalculator.ui.base.BaseViewModel
 import com.jgarin.composecalculator.uimodels.AddMoreListItem
 import com.jgarin.composecalculator.uimodels.DurationUi
 import com.jgarin.composecalculator.uimodels.MainScreenListItem
 import com.jgarin.composecalculator.usecase.CalculateTotalUseCase
 import com.jgarin.composecalculator.usecase.ReadItemsUseCase
 import com.jgarin.composecalculator.usecase.RemoveItemUseCase
+import com.jragin.composecalculator.ui.base.BaseViewModel
 import kotlinx.coroutines.flow.collect
 
 class HomeViewModel(
@@ -43,11 +43,10 @@ class HomeViewModel(
     }.addToLoadingState()
 
     private fun getTotal() = launch {
-        calculateTotalUseCase()
-            .collect { result ->
-                result
-                    .doOnError(::handleError)
-                    .doOnSuccess { total.value = it }
-            }
+        calculateTotalUseCase().collect { result ->
+            result
+                .doOnError(::handleError)
+                .doOnSuccess { total.value = it }
+        }
     }
 }
